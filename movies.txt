@@ -1,0 +1,48 @@
+ = {
+    planetofapes: 2,
+    stars: 3,
+    teste: 4
+    }
+    
+puts "What do you want to do? Update, Display, Delete or Insert a new movie?"
+choice = gets.chomp
+
+case choice
+when "add"
+    puts "Whats the title?"
+    title = gets.chomp
+    if movies[title.to_sym].nil?
+        puts "What is your rating?"
+        rating = gets.chomp
+        movies[title.to_sym] = rating.to_i
+        puts "Added with sucess"
+    else
+        puts "This movie already exists! Try another one"
+    end
+
+when "update"
+    puts "Whats the title?"
+    title = gets.chomp
+    if movies[title.to_sym].nil?
+        puts "this movie haven't been added yet"
+    else 
+        puts "What is the new rating?"
+        rating = gets.chomp
+        movies[title.to_sym] = rating.to_i
+    end
+    
+when "display"
+    movies.each{|movie,rating| puts "#{movie}: #{rating}"} 
+
+when "delete"
+    puts "Whats the title?"
+    title = gets.chomp
+    if movies[title.to_sym].nil? 
+        puts "This movie doesn't exist!"
+    else
+        movies.delete(title)
+        puts "Deleted!"
+    end
+    
+end
+
